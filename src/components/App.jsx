@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Section from './Section/Section';
-import Statistics from './Statistics/Statistisc';
+import Statistics from './Statistics/Statistics';
 import Notification from './Notification/Notification';
 import css from './App.module.css';
 
@@ -23,12 +23,14 @@ class App extends Component {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
   };
+
   countPositiveFeedbackPercentage = () => {
     const { good } = this.state;
     const total = this.countTotalFeedback();
     const value = Math.round((good / total) * 100);
-    return !Number.isNaN(value) ? value : 0;
+    return value;
   };
+
   formatValue = value => {
     return `${Number(value).toFixed(0)}`;
   };
@@ -44,6 +46,7 @@ class App extends Component {
             onLeaveFeedback={this.onLeaveFeedback}
           />
         </Section>
+
         <Section title="Statistics">
           {this.countTotalFeedback() === 0 ? (
             <Notification message="There is no feedback" />

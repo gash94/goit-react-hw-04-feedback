@@ -2,14 +2,14 @@ import css from './Statistics.module.css';
 import PropTypes from 'prop-types';
 import AnimatedNumber from 'animated-number-react';
 
-function Statistics({
+const Statistics = ({
   good,
   neutral,
   bad,
   total,
   positivePercentage,
   formatValue,
-}) {
+}) => {
   return (
     <>
       <ul className={css.list}>
@@ -29,7 +29,7 @@ function Statistics({
       </p>
     </>
   );
-}
+};
 
 Statistics.propTypes = {
   good: PropTypes.number.isRequired,
